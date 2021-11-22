@@ -1,4 +1,6 @@
 ﻿using System;
+using OOPCourse.Domain.Abstract;
+using OOPCourse.Domain.Concrete;
 
 namespace OOPCourse.Main
 {
@@ -6,7 +8,11 @@ namespace OOPCourse.Main
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello to fantasy city.....");
+            var player = new Player(100);
+            var worker = new DataRepo<IAssassin>();
+            var guild = new AssassinGuild(worker);
+            var assassins = guild.GetAssassins();
+            
         }
     }
 }

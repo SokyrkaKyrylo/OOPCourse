@@ -1,0 +1,38 @@
+[
+  {
+    "Name": "Bloody Jack",
+    "Status" : true, 
+    "RewardLowBound": 15,
+    "RewardHighBound": 30
+  },
+  {
+    "Name": "Strong Garry",
+    "Status": true,
+    "RewardLowBound": 20,
+    "RewardHighBound": 40
+  },
+  {
+    "Name": "Silly Peter",
+    "Status": true,
+    "RewardLowBound": 5,
+    "RewardHighBound": 10
+  },
+  {
+    "Name": "Cruel Larry",
+    "Status": true,
+    "RewardLowBound": 7,
+    "RewardHighBound": 15
+  },
+  {
+    "Name": "Crazy Ken",
+    "Status": true,
+    "RewardLowBound": 10,
+    "RewardHighBound": 20
+  },
+  {
+    "Name": "WhiteHead",
+    "Status": true,
+    "RewardLowBound": 16,
+    "RewardHighBound": 22
+  }
+]
