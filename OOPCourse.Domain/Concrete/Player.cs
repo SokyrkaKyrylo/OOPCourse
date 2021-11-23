@@ -3,11 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using OOPCourse.Domain.Abstract;
 
 namespace OOPCourse.Domain.Concrete
 {
-    public class Player : IPlayer
+    public class Player
     {
         public Player(double purse)
         {

@@ -21,7 +21,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\OOPCourse.Domain\OOPCourse.Domain.csproj" />
     <ProjectReference Include="..\OOPCourse.Main\OOPCourse.Main.csproj" />
   </ItemGroup>
 

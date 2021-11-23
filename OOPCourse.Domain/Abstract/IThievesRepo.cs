@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using OOPCourse.Domain.Concrete;
+using OOPCourse.Domain.Models;
 
 namespace OOPCourse.Domain.Abstract
 {
-    interface IPlayer
+    public interface IThievesRepo
     {
-        double Purse { get; }
-        void AddMoney(double sum);
-        double GetMoney(double sum);
+        IEnumerable<Thief> Thieves { get; }
     }
 }

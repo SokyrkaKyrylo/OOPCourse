@@ -1,5 +1,7 @@
 ﻿using System;
-using OOPCourse.Domain.Abstract;
+using System.Threading.Channels;
+using Microsoft.EntityFrameworkCore;
+using OOPCourse.Domain;
 using OOPCourse.Domain.Concrete;
 
 namespace OOPCourse.Main
@@ -8,11 +10,13 @@ namespace OOPCourse.Main
     {
         static void Main(string[] args)
         {
-            var player = new Player(100);
-            var worker = new DataRepo<IAssassin>();
-            var guild = new AssassinGuild(worker);
-            var assassins = guild.GetAssassins();
-            
+            var optionsBuilder = new DbContextOptionsBuilder<ApplicationContext>();
+            var options = optionsBuilder
+                .UseSqlServer(@"Server=ua00474;Database=oopcoursedb;Trusted_Connection=True;")
+                .Options;
+            var context = new ApplicationContext(options);
+            DbFeeder.FeedDb(context);
+            var repo = new NpcRepo(context);
         }
     }
 }
