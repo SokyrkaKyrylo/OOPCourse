@@ -9,7 +9,7 @@ using OOPCourse.Domain.Models;
 
 namespace OOPCourse.Domain.Guilds
 {
-    class AssassinGuild
+    public class AssassinGuild
     {
         private readonly IAssassinsRepo _assassinsRepo;
 

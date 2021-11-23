@@ -8,7 +8,7 @@ using OOPCourse.Domain.Models;
 
 namespace OOPCourse.Domain.Abstract
 {
-    interface IAssassinsRepo
+    public interface IAssassinsRepo
     {
         IEnumerable<Assassin> Assassins { get; } 
     }
