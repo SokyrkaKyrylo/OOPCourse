@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace OOPCourse.Domain.Concrete
 {
@@ -24,14 +20,14 @@ namespace OOPCourse.Domain.Concrete
             Purse += sum;
         }
 
-        public double GetMoney(double sum)
+        public bool GetMoney(double sum)
         {
             if (sum <= 0)
                 throw new ArgumentException("Money can not be less than zero");
             if (Purse < sum)
-                return 0;
+                return false;
             Purse -= sum;
-            return sum;
+            return true;
         }
     }
 }

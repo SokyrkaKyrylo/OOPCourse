@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using OOPCourse.Domain;
-using OOPCourse.Domain.Concrete;
 using OOPCourse.Domain.Models;
 
 namespace OOPCourse.Main
@@ -15,14 +10,14 @@ namespace OOPCourse.Main
         {
             context.Assassins.AddRange(new List<Assassin>
             {
-                new Assassin { Name = "Bloody Jack", LowRewardBound = 15, HighRewardBound = 30, Status = false},
-                new Assassin { Name = "Strong Garry", LowRewardBound = 20,  HighRewardBound = 40, Status = false},
-                new Assassin { Name = "Silly Peter", LowRewardBound = 5, HighRewardBound = 10, Status = false},
-                new Assassin { Name = "Cruel Larry", LowRewardBound = 7, HighRewardBound = 15, Status = false},
-                new Assassin { Name = "Crazy Ken", LowRewardBound = 10, HighRewardBound = 20, Status = false},
-                new Assassin { Name = "Whitehead", LowRewardBound = 16, HighRewardBound = 22, Status = false},
-                new Assassin { Name = "Merciless Jo", LowRewardBound = 10, HighRewardBound = 15, Status = false},
-                new Assassin { Name = "Pangolin", LowRewardBound = 20, HighRewardBound = 30, Status = false},
+                new Assassin { Name = "Bloody Jack", LowRewardBound = 15, HighRewardBound = 30, Status = true},
+                new Assassin { Name = "Strong Garry", LowRewardBound = 20,  HighRewardBound = 40, Status = true},
+                new Assassin { Name = "Silly Peter", LowRewardBound = 5, HighRewardBound = 10, Status = true},
+                new Assassin { Name = "Cruel Larry", LowRewardBound = 7, HighRewardBound = 15, Status = true},
+                new Assassin { Name = "Crazy Ken", LowRewardBound = 10, HighRewardBound = 20, Status = true},
+                new Assassin { Name = "Whitehead", LowRewardBound = 16, HighRewardBound = 22, Status = true},
+                new Assassin { Name = "Merciless Jo", LowRewardBound = 10, HighRewardBound = 15, Status = true},
+                new Assassin { Name = "Pangolin", LowRewardBound = 20, HighRewardBound = 30, Status = true},
             });
 
             context.Thieves.AddRange(new List<Thief>

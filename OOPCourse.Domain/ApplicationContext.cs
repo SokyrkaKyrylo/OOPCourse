@@ -1,5 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using OOPCourse.Domain.Concrete;
 using OOPCourse.Domain.Models;
 
 namespace OOPCourse.Domain
