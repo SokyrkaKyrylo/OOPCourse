@@ -30,11 +30,11 @@ namespace OOPCourse.Tests
         }
 
         [Fact]
-        public void GetMoney_WhenSumIsMoreThanPurse_ReturnsZero()
+        public void GetMoney_WhenSumIsMoreThanPurse_ReturnsFalse()
         {
             var p = new Player(50);
             var result = p.GetMoney(60);
-            Assert.Equal(0, result);
+            Assert.False(result);
         }
 
         [Fact]
@@ -42,7 +42,7 @@ namespace OOPCourse.Tests
         {
             var p = new Player(50);
             var result = p.GetMoney(10);
-            Assert.Equal(10, result);
+            Assert.True(result);
         }
     }
 }

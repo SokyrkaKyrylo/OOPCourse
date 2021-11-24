@@ -11,16 +11,21 @@ namespace OOPCourse.Domain.Concrete
 {
     public class NpcRepo : IAssassinsRepo, IThievesRepo, IBeggarsRepo, IFoolsRepo
     {
-        private readonly ApplicationContext _application;
+        private readonly ApplicationContext _context;
 
-        public NpcRepo(ApplicationContext application)
+        public NpcRepo(ApplicationContext context)
         {
-            _application = application;
+            _context = context;
         }
 
-        public IEnumerable<Assassin> Assassins => _application.Assassins;
-        public IEnumerable<Thief> Thieves => _application.Thieves;
-        public IEnumerable<Beggar> Beggars => _application.Beggars;
-        public IEnumerable<Fool> Fools => _application.Fools;
+        public IEnumerable<Assassin> Assassins => _context.Assassins;
+        public IEnumerable<Thief> Thieves => _context.Thieves;
+        public IEnumerable<Beggar> Beggars => _context.Beggars;
+        public IEnumerable<Fool> Fools => _context.Fools;
+
+        public void Save()
+        {
+            _context.SaveChanges();
+        }
     }
 }

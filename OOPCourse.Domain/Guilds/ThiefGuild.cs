@@ -23,8 +23,9 @@ namespace OOPCourse.Domain.Guilds
         {
             var temp = _thieves.Thieves.Take(NumberOfThieves).ToList();
             var random = new Random();
+            var id = random.Next(1, NumberOfThieves);
             return temp.FirstOrDefault(t => 
-                t.Id.Equals(random.Next(temp.Count)));
+                t.Id == id);
         }
     }
 }

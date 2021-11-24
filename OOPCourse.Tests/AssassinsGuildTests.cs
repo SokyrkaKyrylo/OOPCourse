@@ -1,13 +1,11 @@
-﻿using System;
+﻿using Moq;
+using OOPCourse.Domain.Abstract;
+using OOPCourse.Domain.Guilds;
+using OOPCourse.Domain.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Xunit;
-using Moq;
-using OOPCourse.Domain.Abstract;
-using OOPCourse.Domain.Concrete;
-using OOPCourse.Domain.Guilds;
-using OOPCourse.Domain.Models;
-using OOPCourse.Main;
 
 namespace OOPCourse.Tests
 {
@@ -72,8 +70,6 @@ namespace OOPCourse.Tests
                     new Assassin {Name = "test2", LowRewardBound = 3, HighRewardBound = 4, Status = false},
                     new Assassin {Name = "test3", LowRewardBound = 1, HighRewardBound = 2, Status = true}
                 });
-
-
             var guild = new AssassinGuild(mock.Object);
 
             var res = guild.GetAssassin(2);

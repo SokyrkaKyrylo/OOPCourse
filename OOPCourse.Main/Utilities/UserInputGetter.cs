@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace OOPCourse.Main.Utilities
 {
@@ -13,7 +9,7 @@ namespace OOPCourse.Main.Utilities
             string input = default;
             do
             {
-                Console.WriteLine(whatUserShouldConfirm);
+                Console.WriteLine(whatUserShouldConfirm + " (Yes/No): ");
                 input = Console.ReadLine();
                 switch (input)
                 {

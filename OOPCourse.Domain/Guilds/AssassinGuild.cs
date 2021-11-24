@@ -26,6 +26,7 @@ namespace OOPCourse.Domain.Guilds
             if (reward <= 0)
                 throw new ArgumentException();
             var temp = _assassinsRepo.Assassins
+                .Take(4)
                 .FirstOrDefault(a => a.Status != false
                                      && (a.LowRewardBound <= reward && reward <= a.HighRewardBound));
             if (temp is null)
@@ -38,6 +39,7 @@ namespace OOPCourse.Domain.Guilds
         {
             var temp = _assassinsRepo.Assassins.FirstOrDefault(a => a.Name == assassin.Name);
             temp.Status = false;
+            _assassinsRepo.Save();
         }
     }
 }

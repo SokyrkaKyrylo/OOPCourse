@@ -16,12 +16,13 @@ namespace OOPCourse.Domain.Guilds
             _fools = fools;
         }
 
-        public Fool GetBeggar()
+        public Fool GetFool()
         {
             var temp = _fools.Fools.ToList();
             var random = new Random();
+            var id = random.Next(1, temp.Count);
             return temp.FirstOrDefault(t =>
-                t.Id.Equals(random.Next(temp.Count)));
+                t.Id == id);
         }
     }
 }

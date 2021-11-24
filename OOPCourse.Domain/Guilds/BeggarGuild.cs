@@ -17,7 +17,9 @@ namespace OOPCourse.Domain.Guilds
         {
             var temp = _beggars.Beggars.ToList();
             var random = new Random();
-            return temp.FirstOrDefault(b => b.Id.Equals(random.Next(temp.Count)));
+            var id = random.Next(1, temp.Count - 1);
+            return temp
+                .FirstOrDefault(b => b.Id == id);
         }
     }
 }
