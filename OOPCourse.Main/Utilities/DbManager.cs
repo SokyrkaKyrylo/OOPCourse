@@ -1,10 +1,11 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using OOPCourse.Domain;
 using OOPCourse.Domain.Models;
 
 namespace OOPCourse.Main
 {
-    public class DbFeeder
+    public class DbManager
     {
         public static void FeedDb(ApplicationContext context)
         {
@@ -60,6 +61,15 @@ namespace OOPCourse.Main
             });
 
             context.SaveChangesAsync();
+        }
+
+        public static void RefershDb(ApplicationContext context)
+        {
+            var asssinsToUpdate = context.Assassins.Where(a => a.Status == false);
+            foreach (var item in asssinsToUpdate)
+                item.Status = true;
+            context.UpdateRange(asssinsToUpdate);
+            context.SaveChanges();
         }
     }
 }

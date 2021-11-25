@@ -12,16 +12,11 @@ namespace OOPCourse.Main.EventHandlers
         {
             var guild = new AssassinGuild(repo);
             Console.WriteLine("Wandering around u came across a member of Assassins Guild!!\n" +
-                "He said that smb want's to kill and offer a help, u only should pay\n" +
-                "There a list of assisins, who can make all dirty work instead of u");
-
+                "He said that smb want's to kill and offer a help, u only should pay\n");
+              
             if (!UserInputGetter.GetUsersConfirm("Do u accept Assassuns guild's offer? "))
                 return false;
-
-            var listOfAssassins = guild.GetAssassins();
-            foreach (var a in listOfAssassins)
-                Console.WriteLine($"Assasin reward - [{a.LowRewardBound} - {a.HighRewardBound}]");
-
+           
             string input = default;
             double reward = default;
             do

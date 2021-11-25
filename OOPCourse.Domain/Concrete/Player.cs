@@ -22,7 +22,7 @@ namespace OOPCourse.Domain.Concrete
 
         public bool GetMoney(double sum)
         {
-            if (sum <= 0)
+            if (sum < 0)
                 throw new ArgumentException("Money can not be less than zero");
             if (Purse < sum)
                 return false;

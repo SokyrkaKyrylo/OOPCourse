@@ -14,23 +14,16 @@ namespace OOPCourse.Domain.Guilds
         {
             _assassinsRepo = assassinsRepo;
         }
-
-        public List<Assassin> GetAssassins()
-        {
-            return _assassinsRepo.Assassins
-                .Where(a => a.Status != false).Take(4).ToList();
-        }
-
+        
         public Assassin GetAssassin(double reward)
         {
             if (reward <= 0)
                 throw new ArgumentException();
             var temp = _assassinsRepo.Assassins
-                .Take(4)
                 .FirstOrDefault(a => a.Status != false
                                      && (a.LowRewardBound <= reward && reward <= a.HighRewardBound));
             if (temp is null)
-                throw new NullReferenceException();
+                return null;
             UpdateAssassinStatus(temp);
             return temp;
         }
