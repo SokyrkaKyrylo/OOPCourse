@@ -10,8 +10,9 @@ namespace OOPCourse.Domain.Guilds
 {
     public class ThiefGuild
     {
-        private const int NumberOfThieves = 6;
         public const double StandardFee = 10;
+        
+        private const int NumberOfThieves = 6;
         private readonly IThievesRepo _thieves;
 
         public ThiefGuild(IThievesRepo thieves)
@@ -24,7 +25,7 @@ namespace OOPCourse.Domain.Guilds
             var temp = _thieves.Thieves.Take(NumberOfThieves).ToList();
             var random = new Random();
             var id = random.Next(1, NumberOfThieves);
-            return temp.FirstOrDefault(t => 
+            return temp.FirstOrDefault(t =>
                 t.Id == id);
         }
     }

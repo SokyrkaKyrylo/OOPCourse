@@ -12,11 +12,11 @@ namespace OOPCourse.Tests
     {
 
         [Fact]
-        public void GetAssassin_WhenRewardLessThanZero_ThrowsArgumentExc()
+        public void GetAssassin_WhenRewardLessThanZero_ReturnNull()
         {
             var mock = new Mock<IAssassinsRepo>();
             var guild = new AssassinGuild(mock.Object);
-            Assert.Throws<ArgumentException>(() => guild.GetAssassin(-5));
+            Assert.Null(guild.GetAssassin(-5));
         }
 
         [Fact]

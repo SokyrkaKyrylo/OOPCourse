@@ -6,23 +6,28 @@ using System;
 
 namespace OOPCourse.Main.EventHandlers
 {
-    internal class FoolHandler
+    internal class FoolHandler : EventHandler
     {
-        public static void Communicate(Player player, IFoolsRepo repo)
+        public override bool Communicate(Player player, NpcRepo repo)
         {
             var guild = new FoolGuild(repo);
             var fool = guild.GetFool();
+
+            if (fool == null)
+                return true;
+
             Console.WriteLine("Wandering around u came across your friend. Also he is a member of Fools guild!!\n" +
-                $"His is {fool.Type}. And he offer u to work and get salary in size of {fool.Salary}");
+                $"His is {fool.Type}. And he offer u to work and get salary in size of {MoneyConverter.Convert(fool.Salary)}");
 
             if (!UserInputGetter.GetUsersConfirm("Will u work? "))
             {
                 Console.WriteLine("So no problem have nice day!");
-                return;
+                return true;
             }
 
-            Console.WriteLine("Thanks that help me!!! There is your reward");
+            Console.WriteLine("Thanks that help me!!! There is your reward.");
             player.AddMoney(fool.Salary);
+            return true;
         }
     }
 }

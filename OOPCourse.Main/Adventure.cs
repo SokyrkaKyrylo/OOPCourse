@@ -1,13 +1,12 @@
-﻿using OOPCourse.Domain;
-using OOPCourse.Domain.Abstract;
-using OOPCourse.Domain.Concrete;
+﻿using OOPCourse.Domain.Concrete;
 using OOPCourse.Main.EventHandlers;
 using System;
+using EventHandler = OOPCourse.Main.EventHandlers.EventHandler;
 
 namespace OOPCourse.Main
 {
     internal class Adventure
-    {               
+    {
         private NpcRepo _npcRepo;
 
         public Adventure(NpcRepo npcRepo)
@@ -26,31 +25,37 @@ namespace OOPCourse.Main
                 Console.WriteLine("Have a nice adventure, stranger!");
                 while (GenerateEvent(player))
                 {
-                    Console.WriteLine(String.Format("Your purse {0:0.##}", player.Purse));
+                    if ((int)player.Purse == 0)
+                        break;
+                    Console.WriteLine(String.Format("Your purse {0:0.##} dollars", player.Purse));
                 };
                 Console.WriteLine("YOU DIED");
                 Console.WriteLine("Do u wanna to try again? (Any/No)");
                 input = Console.ReadLine();
             }
-            while (input != "No");            
+            while (input != "No");
         }
 
         private bool GenerateEvent(Player player)
         {
             var random = new Random();
-            switch (random.Next(1,5))
+            EventHandler eventHandler = null;
+            switch (random.Next(1, 5))
             {
                 case 1:
-                    return AssassinHandler.Communicate(player, _npcRepo);
+                    eventHandler = new AssassinHandler();
+                    break;
                 case 2:
-                    return ThiefHandler.Communicate(player, _npcRepo);
+                    eventHandler = new ThiefHandler();
+                    break;
                 case 3:
-                    return BeggarHandler.Communicate(player, _npcRepo);
+                    eventHandler = new BeggarHandler();
+                    break;
                 case 4:
-                    FoolHandler.Communicate(player, _npcRepo);
-                    return true;
+                    eventHandler = new FoolHandler();
+                    break;
             }
-            return true;
+            return eventHandler.Communicate(player, _npcRepo);
         }
     }
 }

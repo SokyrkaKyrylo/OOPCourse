@@ -7,14 +7,15 @@ using System;
 
 namespace OOPCourse.Main.EventHandlers
 {
-    internal class AssassinHandler
+    internal class AssassinHandler : EventHandler
     {
-        public static bool Communicate(Player player, IAssassinsRepo repo)
+        public override bool Communicate(Player player, NpcRepo repo)
         {
             var guild = new AssassinGuild(repo);
             Console.WriteLine("Wandering around u came across a member of Assassins Guild!!\n" +
-                "He said that smb want's to kill and offer a help, u only should pay");              
-            if (!UserInputGetter.GetUsersConfirm("Do u accept Assassuns guild's offer? "))
+                "He said that smb want's to kill and offer a help, u only should pay");
+
+            if (!UserInputGetter.GetUsersConfirm("Do u accept Assassins guild's offer? "))
             {
                 Console.WriteLine("See you on cemetry!");
                 return false;
@@ -22,30 +23,17 @@ namespace OOPCourse.Main.EventHandlers
 
             string input = default;
             double reward = default;
-            Assassin assassin = null;
-            while (true)
+            do
             {
-                try
+                Console.Write("Enter reward: ");
+                input = Console.ReadLine();
+                if (!double.TryParse(input, out reward))
                 {
-                    do
-                    {
-                        Console.WriteLine("Enter reward ");
-                        input = Console.ReadLine();
-                        if (!double.TryParse(input, out reward))
-                        {
-                            Console.WriteLine("Try again please");
-                        }
-                    } while (!double.TryParse(input, out reward));
-                    assassin = guild.GetAssassin(reward);
+                    Console.WriteLine("Try again please");
                 }
-                catch (Exception ex)
-                {
-                    Console.WriteLine("Reward cannot be less than zero");
-                    continue;
-                }
-                break;
-            }
-          
+            } while (!double.TryParse(input, out reward));
+            
+            var assassin = guild.GetAssassin(reward);
             if (assassin is null)
             {
                 Console.WriteLine("Sorry, but we don't have killer who will make this job for this reward");

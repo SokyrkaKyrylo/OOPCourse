@@ -6,14 +6,20 @@ using System;
 
 namespace OOPCourse.Main.EventHandlers
 {
-    internal class BeggarHandler
+    internal class BeggarHandler : EventHandler
     {
-        public static bool Communicate(Player player, IBeggarsRepo repo)
+        public override bool Communicate(Player player, NpcRepo repo)
         {
             var guild = new BeggarGuild(repo);
             var beggar = guild.GetBeggar();
+
+            if (beggar == null)
+            {
+                return true;
+            }
+
             Console.WriteLine("Wandering around u came across a member of Begger Guild!!\n" +
-                $"He is a {beggar.Type}. and he ask for some help is size of {beggar.Fee}");
+                $"He is a {beggar.Type}. and he ask for some help is size of {MoneyConverter.Convert(beggar.Fee)}");
 
             if (!UserInputGetter.GetUsersConfirm("Will u help him? "))
             {
@@ -27,7 +33,7 @@ namespace OOPCourse.Main.EventHandlers
                 return false;
             }
 
-            Console.WriteLine("Thank u so much. Let God bless your soul. ");
+            Console.WriteLine("Thank u so much. Let God bless your soul.");
             return true;
         }
     }

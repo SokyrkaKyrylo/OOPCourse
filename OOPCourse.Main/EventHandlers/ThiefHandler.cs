@@ -1,17 +1,19 @@
-﻿using OOPCourse.Domain.Abstract;
-using OOPCourse.Domain.Concrete;
+﻿using OOPCourse.Domain.Concrete;
 using OOPCourse.Domain.Guilds;
 using OOPCourse.Main.Utilities;
 using System;
 
 namespace OOPCourse.Main.EventHandlers
 {
-    internal class ThiefHandler
+    internal class ThiefHandler : EventHandler
     {
-        public static bool Communicate(Player player, IThievesRepo repo)
+        public override bool Communicate(Player player, NpcRepo repo)
         {
             var guild = new ThiefGuild(repo);
             var thief = guild.GetThief();
+
+            if (thief == null)
+                return true;
 
             Console.WriteLine("Wandering around u came across a member of Thief Guild!\n" +
                 $"My name is {thief.Name}. U should pay a fee in size of {ThiefGuild.StandardFee} AM$");
@@ -24,7 +26,7 @@ namespace OOPCourse.Main.EventHandlers
 
             if (!player.GetMoney(ThiefGuild.StandardFee))
             {
-                Console.WriteLine("Heh, as I anderstand u decide to treat us. It was a mistake");
+                Console.WriteLine("Heh, as I understand, U decide to treat us. It was a mistake");
                 return false;
             }
 

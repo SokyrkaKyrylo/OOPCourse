@@ -16,8 +16,8 @@ namespace OOPCourse.Domain.Guilds
 
         public Assassin GetAssassin(double reward)
         {
-            if (reward <= 0)
-                throw new ArgumentException();
+            if (reward < 0)
+                return null;
             var temp = _assassinsRepo.Assassins
                 .FirstOrDefault(a => a.Status != false
                                      && (a.LowRewardBound <= reward && reward <= a.HighRewardBound));
