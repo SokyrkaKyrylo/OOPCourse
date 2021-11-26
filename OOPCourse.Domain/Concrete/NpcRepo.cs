@@ -1,11 +1,6 @@
 ﻿using OOPCourse.Domain.Abstract;
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using OOPCourse.Domain.Models;
+using System.Collections.Generic;
 
 namespace OOPCourse.Domain.Concrete
 {

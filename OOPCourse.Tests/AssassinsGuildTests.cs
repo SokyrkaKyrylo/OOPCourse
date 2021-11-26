@@ -4,14 +4,13 @@ using OOPCourse.Domain.Guilds;
 using OOPCourse.Domain.Models;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using Xunit;
 
 namespace OOPCourse.Tests
 {
     public class AssassinsGuildTests
     {
-       
+
         [Fact]
         public void GetAssassin_WhenRewardLessThanZero_ThrowsArgumentExc()
         {

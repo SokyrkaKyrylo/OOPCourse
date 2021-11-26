@@ -1,22 +1,19 @@
-﻿using Autofac;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using OOPCourse.Domain;
-using OOPCourse.Domain.Abstract;
 using OOPCourse.Domain.Concrete;
-using OOPCourse.Main.Utilities;
-  
+
 namespace OOPCourse.Main
 {
     class Program
     {
-                
+
         static void Main(string[] args)
         {
             var optionsBuilder = new DbContextOptionsBuilder<ApplicationContext>();
             var options = optionsBuilder
                 .UseSqlServer(@"Server=ua00474;Database=oopcoursedb;Trusted_Connection=True;")
                 .Options;
-            var dbContext = new ApplicationContext(options);            
+            var dbContext = new ApplicationContext(options);
             if (dbContext.Database.EnsureCreated())
                 DbManager.FeedDb(dbContext);
             else
@@ -24,7 +21,7 @@ namespace OOPCourse.Main
 
             var repo = new NpcRepo(dbContext);
             var adventure = new Adventure(repo);
-            
+
             adventure.Start();
         }
     }

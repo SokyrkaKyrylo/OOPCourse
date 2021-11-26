@@ -1,7 +1,6 @@
 ﻿using OOPCourse.Domain.Abstract;
 using OOPCourse.Domain.Models;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 
 namespace OOPCourse.Domain.Guilds
@@ -14,7 +13,7 @@ namespace OOPCourse.Domain.Guilds
         {
             _assassinsRepo = assassinsRepo;
         }
-        
+
         public Assassin GetAssassin(double reward)
         {
             if (reward <= 0)
