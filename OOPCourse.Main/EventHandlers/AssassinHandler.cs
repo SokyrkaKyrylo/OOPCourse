@@ -1,15 +1,14 @@
 ﻿using OOPCourse.Domain.Abstract;
 using OOPCourse.Domain.Concrete;
 using OOPCourse.Domain.Guilds;
-using OOPCourse.Domain.Models;
 using OOPCourse.Main.Utilities;
 using System;
 
 namespace OOPCourse.Main.EventHandlers
 {
-    internal class AssassinHandler : EventHandler
+    internal class AssassinHandler
     {
-        public override bool Communicate(Player player, NpcRepo repo)
+        public static bool Communicate(Player player, IAssassinsRepo repo)
         {
             var guild = new AssassinGuild(repo);
             Console.WriteLine("Wandering around u came across a member of Assassins Guild!!\n" +
@@ -32,7 +31,7 @@ namespace OOPCourse.Main.EventHandlers
                     Console.WriteLine("Try again please");
                 }
             } while (!double.TryParse(input, out reward));
-            
+
             var assassin = guild.GetAssassin(reward);
             if (assassin is null)
             {

@@ -1,6 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using OOPCourse.Domain;
-using OOPCourse.Domain.Concrete;
 
 namespace OOPCourse.Main
 {
@@ -11,17 +10,16 @@ namespace OOPCourse.Main
         {
             var optionsBuilder = new DbContextOptionsBuilder<ApplicationContext>();
             var options = optionsBuilder
-                .UseSqlServer(@"Server=ua00474;Database=oopcoursedb;Trusted_Connection=True;")
+                .UseSqlServer(@"Server=.\SQLEXPRESS;Database=OopCourse;Trusted_Connection=True;")
                 .Options;
             var dbContext = new ApplicationContext(options);
+
             if (dbContext.Database.EnsureCreated())
                 DbManager.FeedDb(dbContext);
             else
                 DbManager.RefershDb(dbContext);
-
-            var repo = new NpcRepo(dbContext);
-            var adventure = new Adventure(repo);
-
+            
+            var adventure = new Adventure(dbContext);
             adventure.Start();
         }
     }

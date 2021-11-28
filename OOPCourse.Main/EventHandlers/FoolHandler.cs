@@ -6,9 +6,9 @@ using System;
 
 namespace OOPCourse.Main.EventHandlers
 {
-    internal class FoolHandler : EventHandler
+    internal class FoolHandler
     {
-        public override bool Communicate(Player player, NpcRepo repo)
+        public static bool Communicate(Player player, IFoolsRepo repo)
         {
             var guild = new FoolGuild(repo);
             var fool = guild.GetFool();

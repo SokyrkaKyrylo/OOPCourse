@@ -1,17 +1,17 @@
-﻿using OOPCourse.Domain.Concrete;
+﻿using OOPCourse.Domain;
+using OOPCourse.Domain.Concrete;
 using OOPCourse.Main.EventHandlers;
 using System;
-using EventHandler = OOPCourse.Main.EventHandlers.EventHandler;
 
 namespace OOPCourse.Main
 {
     internal class Adventure
     {
-        private NpcRepo _npcRepo;
+        private ApplicationContext _context;
 
-        public Adventure(NpcRepo npcRepo)
+        public Adventure(ApplicationContext context)
         {
-            _npcRepo = npcRepo;
+            _context = context;
         }
 
         public void Start()
@@ -39,23 +39,22 @@ namespace OOPCourse.Main
         private bool GenerateEvent(Player player)
         {
             var random = new Random();
-            EventHandler eventHandler = null;
             switch (random.Next(1, 5))
             {
                 case 1:
-                    eventHandler = new AssassinHandler();
-                    break;
+                    var assassinRepo = new AssassinsRepo(_context);
+                    return AssassinHandler.Communicate(player, assassinRepo);
                 case 2:
-                    eventHandler = new ThiefHandler();
-                    break;
+                    var thievesRepo = new ThievesRepo(_context);
+                    return ThiefHandler.Communicate(player, thievesRepo);
                 case 3:
-                    eventHandler = new BeggarHandler();
-                    break;
+                    var beggarsRepo = new BeggarsRepo(_context);
+                    return BeggarHandler.Communicate(player, beggarsRepo);
                 case 4:
-                    eventHandler = new FoolHandler();
-                    break;
+                    var foolsRepo = new FoolsRepo(_context);
+                    return FoolHandler.Communicate(player, foolsRepo);
             }
-            return eventHandler.Communicate(player, _npcRepo);
+            return true;
         }
     }
 }

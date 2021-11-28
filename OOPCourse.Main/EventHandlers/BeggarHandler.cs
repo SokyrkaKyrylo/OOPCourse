@@ -6,9 +6,9 @@ using System;
 
 namespace OOPCourse.Main.EventHandlers
 {
-    internal class BeggarHandler : EventHandler
+    internal class BeggarHandler
     {
-        public override bool Communicate(Player player, NpcRepo repo)
+        public static bool Communicate(Player player, IBeggarsRepo repo)
         {
             var guild = new BeggarGuild(repo);
             var beggar = guild.GetBeggar();

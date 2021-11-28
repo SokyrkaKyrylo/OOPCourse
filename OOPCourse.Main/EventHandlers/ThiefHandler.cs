@@ -1,13 +1,14 @@
-﻿using OOPCourse.Domain.Concrete;
+﻿using OOPCourse.Domain.Abstract;
+using OOPCourse.Domain.Concrete;
 using OOPCourse.Domain.Guilds;
 using OOPCourse.Main.Utilities;
 using System;
 
 namespace OOPCourse.Main.EventHandlers
 {
-    internal class ThiefHandler : EventHandler
+    internal class ThiefHandler
     {
-        public override bool Communicate(Player player, NpcRepo repo)
+        public static bool Communicate(Player player, IThievesRepo repo)
         {
             var guild = new ThiefGuild(repo);
             var thief = guild.GetThief();

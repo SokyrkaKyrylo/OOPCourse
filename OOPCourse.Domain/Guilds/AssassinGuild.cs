@@ -1,6 +1,6 @@
 ﻿using OOPCourse.Domain.Abstract;
 using OOPCourse.Domain.Models;
-using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace OOPCourse.Domain.Guilds
@@ -14,11 +14,18 @@ namespace OOPCourse.Domain.Guilds
             _assassinsRepo = assassinsRepo;
         }
 
+        public List<Assassin> GetAssassins()
+        {
+            return _assassinsRepo.Assassins
+                .Where(a => a.Status != false).Take(4).ToList();
+        }
+
         public Assassin GetAssassin(double reward)
         {
-            if (reward < 0)
+            if (reward <= 0)
                 return null;
             var temp = _assassinsRepo.Assassins
+                .Take(4)
                 .FirstOrDefault(a => a.Status != false
                                      && (a.LowRewardBound <= reward && reward <= a.HighRewardBound));
             if (temp is null)
