@@ -10,7 +10,7 @@ namespace OOPCourse.Main
         {
             var optionsBuilder = new DbContextOptionsBuilder<ApplicationContext>();
             var options = optionsBuilder
-                .UseSqlServer(@"Server=.\SQLEXPRESS;Database=OopCourse;Trusted_Connection=True;")
+                .UseSqlServer(@"Server=UA00474;Database=oopcoursedb;Trusted_Connection=True;")
                 .Options;
             var dbContext = new ApplicationContext(options);
 
