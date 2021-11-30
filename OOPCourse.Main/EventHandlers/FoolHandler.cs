@@ -1,17 +1,35 @@
 ﻿using OOPCourse.Domain.Abstract;
 using OOPCourse.Domain.Concrete;
 using OOPCourse.Domain.Guilds;
+using OOPCourse.Domain.Models;
 using OOPCourse.Main.Utilities;
 using System;
 
 namespace OOPCourse.Main.EventHandlers
 {
-    internal class FoolHandler
+    internal class FoolHandler : EventHandler
     {
-        public static bool Communicate(Player player, IFoolsRepo repo)
+        private IFoolsRepo _foolsRepo;
+
+        public FoolHandler(IFoolsRepo foolsRepo)
         {
-            var guild = new FoolGuild(repo);
-            var fool = guild.GetFool();
+            _foolsRepo = foolsRepo;
+        }
+
+        public override bool Communicate(Player player)
+        {
+            var guild = new FoolGuild(_foolsRepo);
+            Fool fool = null;
+
+            try
+            {
+                fool = guild.GetFool();
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("Something went wrong, try to reload program");
+                return true;
+            }
 
             if (fool == null)
                 return true;

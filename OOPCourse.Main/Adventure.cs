@@ -2,6 +2,7 @@
 using OOPCourse.Domain.Concrete;
 using OOPCourse.Main.EventHandlers;
 using System;
+using EventHandler = OOPCourse.Main.EventHandlers.EventHandler;
 
 namespace OOPCourse.Main
 {
@@ -33,28 +34,33 @@ namespace OOPCourse.Main
                 Console.WriteLine("Do u wanna to try again? (Any/No)");
                 input = Console.ReadLine();
             }
-            while (input != "No");
+            while (input.ToLower() != "no");
         }
 
         private bool GenerateEvent(Player player)
         {
             var random = new Random();
+            EventHandler eventHandler = null;
             switch (random.Next(1, 5))
             {
                 case 1:
                     var assassinRepo = new AssassinsRepo(_context);
-                    return AssassinHandler.Communicate(player, assassinRepo);
+                    eventHandler = new AssassinHandler(assassinRepo);
+                    break;
                 case 2:
                     var thievesRepo = new ThievesRepo(_context);
-                    return ThiefHandler.Communicate(player, thievesRepo);
+                    eventHandler = new ThiefHandler(thievesRepo);
+                    break;
                 case 3:
                     var beggarsRepo = new BeggarsRepo(_context);
-                    return BeggarHandler.Communicate(player, beggarsRepo);
+                    eventHandler = new BeggarHandler(beggarsRepo);
+                    break;
                 case 4:
                     var foolsRepo = new FoolsRepo(_context);
-                    return FoolHandler.Communicate(player, foolsRepo);
+                    eventHandler = new FoolHandler(foolsRepo);
+                    break;
             }
-            return true;
+            return eventHandler.Communicate(player);
         }
     }
 }

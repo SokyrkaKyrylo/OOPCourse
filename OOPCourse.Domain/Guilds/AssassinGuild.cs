@@ -17,7 +17,7 @@ namespace OOPCourse.Domain.Guilds
         public List<Assassin> GetAssassins()
         {
             return _assassinsRepo.Assassins
-                .Where(a => a.Status != false).Take(4).ToList();
+                .Where(a => a.Status).Take(4).ToList();
         }
 
         public Assassin GetAssassin(double reward)
@@ -26,7 +26,7 @@ namespace OOPCourse.Domain.Guilds
                 return null;
             var temp = _assassinsRepo.Assassins
                 .Take(4)
-                .FirstOrDefault(a => a.Status != false
+                .FirstOrDefault(a => a.Status
                                      && (a.LowRewardBound <= reward && reward <= a.HighRewardBound));
             if (temp is null)
                 return null;

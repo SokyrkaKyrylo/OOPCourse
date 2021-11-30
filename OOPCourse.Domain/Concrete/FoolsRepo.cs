@@ -1,6 +1,5 @@
 ﻿using OOPCourse.Domain.Abstract;
 using OOPCourse.Domain.Models;
-using System;
 using System.Collections.Generic;
 
 namespace OOPCourse.Domain.Concrete

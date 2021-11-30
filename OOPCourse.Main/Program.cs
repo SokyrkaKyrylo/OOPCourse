@@ -8,17 +8,25 @@ namespace OOPCourse.Main
 
         static void Main(string[] args)
         {
-            var optionsBuilder = new DbContextOptionsBuilder<ApplicationContext>();
-            var options = optionsBuilder
-                .UseSqlServer(@"Server=UA00474;Database=oopcoursedb;Trusted_Connection=True;")
-                .Options;
-            var dbContext = new ApplicationContext(options);
+            ApplicationContext dbContext = null;
+            try
+            {
+                var optionsBuilder = new DbContextOptionsBuilder<ApplicationContext>();
+                var options = optionsBuilder
+                    .UseSqlServer(@"Server=.\SQLEXPRESS;Database=oopcoursedb;Trusted_Connection=True;")
+                    .Options;
+                dbContext = new ApplicationContext(options);
 
-            if (dbContext.Database.EnsureCreated())
-                DbManager.FeedDb(dbContext);
-            else
-                DbManager.RefershDb(dbContext);
-            
+                if (dbContext.Database.EnsureCreated())
+                    DbManager.FeedDb(dbContext);
+                else
+                    DbManager.RefershDb(dbContext);
+            }
+            catch (System.Exception)
+            {
+                System.Console.WriteLine("During loading something went wrong, try again");
+                return;
+            }
             var adventure = new Adventure(dbContext);
             adventure.Start();
         }

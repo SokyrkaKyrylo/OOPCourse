@@ -1,22 +1,30 @@
 ﻿using OOPCourse.Domain.Abstract;
 using OOPCourse.Domain.Concrete;
 using OOPCourse.Domain.Guilds;
+using OOPCourse.Domain.Models;
 using OOPCourse.Main.Utilities;
 using System;
 
 namespace OOPCourse.Main.EventHandlers
 {
-    internal class AssassinHandler
+    internal class AssassinHandler : EventHandler
     {
-        public static bool Communicate(Player player, IAssassinsRepo repo)
+        private IAssassinsRepo _assassinsRepo;
+
+        public AssassinHandler(IAssassinsRepo assassinsRepo)
         {
-            var guild = new AssassinGuild(repo);
+            _assassinsRepo = assassinsRepo;
+        }
+
+        public override bool Communicate(Player player)
+        {
+            var guild = new AssassinGuild(_assassinsRepo);
             Console.WriteLine("Wandering around u came across a member of Assassins Guild!!\n" +
                 "He said that smb want's to kill and offer a help, u only should pay");
 
             if (!UserInputGetter.GetUsersConfirm("Do u accept Assassins guild's offer? "))
             {
-                Console.WriteLine("See you on cemetry!");
+                Console.WriteLine("See you on cemetery!");
                 return false;
             }
 
@@ -32,7 +40,17 @@ namespace OOPCourse.Main.EventHandlers
                 }
             } while (!double.TryParse(input, out reward));
 
-            var assassin = guild.GetAssassin(reward);
+            Assassin assassin = null;
+            try
+            {
+                assassin = guild.GetAssassin(reward);
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("Something went wrong, try to reload program");
+                return true;
+            }
+
             if (assassin is null)
             {
                 Console.WriteLine("Sorry, but we don't have killer who will make this job for this reward");
