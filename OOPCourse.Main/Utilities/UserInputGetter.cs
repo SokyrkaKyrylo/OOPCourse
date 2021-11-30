@@ -11,17 +11,17 @@ namespace OOPCourse.Main.Utilities
             {
                 Console.WriteLine(whatUserShouldConfirm + " (Yes/No): ");
                 input = Console.ReadLine();
-                switch (input)
+                switch (input.ToLower())
                 {
-                    case "Yes":
+                    case "yes":
                         return true;
-                    case "No":
+                    case "no":
                         return false;
                     default:
                         Console.WriteLine("Try to answer again, please");
                         break;
                 }
-            } while (input != "Yes" || input != "No");
+            } while (input.ToLower() != "yes" || input.ToLower() != "no");
             return false;
         }
     }

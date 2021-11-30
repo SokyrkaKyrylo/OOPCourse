@@ -1,5 +1,7 @@
-﻿using OOPCourse.Domain.Concrete;
+﻿using OOPCourse.Domain.Abstract;
+using OOPCourse.Domain.Concrete;
 using OOPCourse.Domain.Guilds;
+using OOPCourse.Domain.Models;
 using OOPCourse.Main.Utilities;
 using System;
 
@@ -7,10 +9,27 @@ namespace OOPCourse.Main.EventHandlers
 {
     internal class ThiefHandler : EventHandler
     {
-        public override bool Communicate(Player player, NpcRepo repo)
+        private IThievesRepo _thievesRepo;
+
+        public ThiefHandler(IThievesRepo thievesRepo)
         {
-            var guild = new ThiefGuild(repo);
-            var thief = guild.GetThief();
+            _thievesRepo = thievesRepo;
+        }
+
+        public override bool Communicate(Player player)
+        {
+            var guild = new ThiefGuild(_thievesRepo);
+            Thief thief = null;
+
+            try
+            {
+                thief = guild.GetThief();
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("Something went wrong, try to reload program");
+                return true;
+            }
 
             if (thief == null)
                 return true;
@@ -20,7 +39,7 @@ namespace OOPCourse.Main.EventHandlers
 
             if (!UserInputGetter.GetUsersConfirm("Will u pay? "))
             {
-                Console.WriteLine("Hmm, the next time I\'ll see you on cemetry");
+                Console.WriteLine("Hmm, the next time I\'ll see you on cemetery");
                 return false;
             }
 

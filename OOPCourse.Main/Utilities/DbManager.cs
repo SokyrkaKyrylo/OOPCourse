@@ -1,7 +1,7 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using OOPCourse.Domain;
+﻿using OOPCourse.Domain;
 using OOPCourse.Domain.Models;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace OOPCourse.Main
 {

@@ -1,4 +1,5 @@
-﻿using OOPCourse.Domain.Concrete;
+﻿using OOPCourse.Domain;
+using OOPCourse.Domain.Concrete;
 using OOPCourse.Main.EventHandlers;
 using System;
 using EventHandler = OOPCourse.Main.EventHandlers.EventHandler;
@@ -7,11 +8,11 @@ namespace OOPCourse.Main
 {
     internal class Adventure
     {
-        private NpcRepo _npcRepo;
+        private ApplicationContext _context;
 
-        public Adventure(NpcRepo npcRepo)
+        public Adventure(ApplicationContext context)
         {
-            _npcRepo = npcRepo;
+            _context = context;
         }
 
         public void Start()
@@ -33,7 +34,7 @@ namespace OOPCourse.Main
                 Console.WriteLine("Do u wanna to try again? (Any/No)");
                 input = Console.ReadLine();
             }
-            while (input != "No");
+            while (input.ToLower() != "no");
         }
 
         private bool GenerateEvent(Player player)
@@ -43,19 +44,23 @@ namespace OOPCourse.Main
             switch (random.Next(1, 5))
             {
                 case 1:
-                    eventHandler = new AssassinHandler();
+                    var assassinRepo = new AssassinsRepo(_context);
+                    eventHandler = new AssassinHandler(assassinRepo);
                     break;
                 case 2:
-                    eventHandler = new ThiefHandler();
+                    var thievesRepo = new ThievesRepo(_context);
+                    eventHandler = new ThiefHandler(thievesRepo);
                     break;
                 case 3:
-                    eventHandler = new BeggarHandler();
+                    var beggarsRepo = new BeggarsRepo(_context);
+                    eventHandler = new BeggarHandler(beggarsRepo);
                     break;
                 case 4:
-                    eventHandler = new FoolHandler();
+                    var foolsRepo = new FoolsRepo(_context);
+                    eventHandler = new FoolHandler(foolsRepo);
                     break;
             }
-            return eventHandler.Communicate(player, _npcRepo);
+            return eventHandler.Communicate(player);
         }
     }
 }

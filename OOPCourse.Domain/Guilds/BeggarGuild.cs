@@ -1,7 +1,7 @@
-﻿using System;
-using System.Linq;
-using OOPCourse.Domain.Abstract;
+﻿using OOPCourse.Domain.Abstract;
 using OOPCourse.Domain.Models;
+using System;
+using System.Linq;
 
 namespace OOPCourse.Domain.Guilds
 {

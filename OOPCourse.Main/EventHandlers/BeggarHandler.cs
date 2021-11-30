@@ -1,6 +1,7 @@
 ﻿using OOPCourse.Domain.Abstract;
 using OOPCourse.Domain.Concrete;
 using OOPCourse.Domain.Guilds;
+using OOPCourse.Domain.Models;
 using OOPCourse.Main.Utilities;
 using System;
 
@@ -8,17 +9,34 @@ namespace OOPCourse.Main.EventHandlers
 {
     internal class BeggarHandler : EventHandler
     {
-        public override bool Communicate(Player player, NpcRepo repo)
+        private IBeggarsRepo _beggarsRepo;
+
+        public BeggarHandler(IBeggarsRepo beggarsRepo)
         {
-            var guild = new BeggarGuild(repo);
-            var beggar = guild.GetBeggar();
+            _beggarsRepo = beggarsRepo;
+        }
+
+        public override bool Communicate(Player player)
+        {
+            var guild = new BeggarGuild(_beggarsRepo);
+            Beggar beggar = null;
+
+            try
+            {
+                Console.WriteLine("Something went wrong, try to reload program");
+                beggar = guild.GetBeggar();
+            }
+            catch (Exception)
+            {
+                return true;
+            }
 
             if (beggar == null)
             {
                 return true;
             }
 
-            Console.WriteLine("Wandering around u came across a member of Begger Guild!!\n" +
+            Console.WriteLine("Wandering around u came across a member of Beggar Guild!!\n" +
                 $"He is a {beggar.Type}. and he ask for some help is size of {MoneyConverter.Convert(beggar.Fee)}");
 
             if (!UserInputGetter.GetUsersConfirm("Will u help him? "))

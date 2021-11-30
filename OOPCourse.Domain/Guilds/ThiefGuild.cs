@@ -1,17 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using OOPCourse.Domain.Abstract;
+﻿using OOPCourse.Domain.Abstract;
 using OOPCourse.Domain.Models;
+using System;
+using System.Linq;
 
 namespace OOPCourse.Domain.Guilds
 {
     public class ThiefGuild
     {
         public const double StandardFee = 10;
-        
+
         private const int NumberOfThieves = 6;
         private readonly IThievesRepo _thieves;
 
