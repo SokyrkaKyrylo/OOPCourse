@@ -13,7 +13,7 @@ namespace OOPCourse.Main
         private int _numberOfThefts;
         private int _playerPurse;
 
-        public Adventure(ApplicationContext context, int numberOfThefts, int playerPurse)
+        public Adventure(ApplicationContext context, int playerPurse, int numberOfThefts)
         {
             _context = context;
             _numberOfThefts = numberOfThefts;
@@ -41,20 +41,25 @@ namespace OOPCourse.Main
             }
             while (input.ToLower() != "no");
         }
-
+            
         private bool GenerateEvent(Player player)
         {
             var random = new Random();
             EventHandler eventHandler = null;
-            switch (2)
+            switch (random.Next(1,5))
             {
                 case 1:
                     var assassinRepo = new AssassinsRepo(_context);
                     eventHandler = new AssassinHandler(assassinRepo);
                     break;
                 case 2:
+                    if (_numberOfThefts <= 0)
+                    {                        
+                        Console.WriteLine("U come across a stranger who wish u a good luck");
+                        return true;
+                    }
                     var thievesRepo = new ThievesRepo(_context);
-                    eventHandler = new ThiefHandler(thievesRepo, _numberOfThefts--);
+                    eventHandler = new ThiefHandler(thievesRepo);
                     break;
                 case 3:
                     var beggarsRepo = new BeggarsRepo(_context);

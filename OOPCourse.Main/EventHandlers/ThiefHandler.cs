@@ -10,19 +10,14 @@ namespace OOPCourse.Main.EventHandlers
     internal class ThiefHandler : EventHandler
     {
         private IThievesRepo _thievesRepo;
-        private int _numberOfThefts;
 
-        public ThiefHandler(IThievesRepo thievesRepo, int numberOfThefts)
+        public ThiefHandler(IThievesRepo thievesRepo)
         {
             _thievesRepo = thievesRepo;
-            _numberOfThefts = numberOfThefts;
         }
 
         public override bool Communicate(Player player)
-        {
-            if (_numberOfThefts <= 0)
-                return true;
-            
+        {            
             var guild = new ThiefGuild(_thievesRepo);
             Thief thief = null;
 
