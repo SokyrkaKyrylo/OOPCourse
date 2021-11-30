@@ -25,6 +25,7 @@ namespace OOPCourse.Main
             string input = default;
             do
             {
+                DbManager.RefershDb(_context);
                 var player = new Player(_playerPurse);
                 Console.WriteLine("Hello to Ankh-Morpork");
                 Console.WriteLine($"In the start of the game have {player.Purse} dollars");
