@@ -10,9 +10,14 @@ namespace OOPCourse.Main
     {
         private ApplicationContext _context;
 
-        public Adventure(ApplicationContext context)
+        private int _numberOfThefts;
+        private int _playerPurse;
+
+        public Adventure(ApplicationContext context, int numberOfThefts, int playerPurse)
         {
             _context = context;
+            _numberOfThefts = numberOfThefts;
+            _playerPurse = playerPurse;
         }
 
         public void Start()
@@ -20,7 +25,7 @@ namespace OOPCourse.Main
             string input = default;
             do
             {
-                var player = new Player(100);
+                var player = new Player(_playerPurse);
                 Console.WriteLine("Hello to Ankh-Morpork");
                 Console.WriteLine($"In the start of the game have {player.Purse} dollars");
                 Console.WriteLine("Have a nice adventure, stranger!");
@@ -41,7 +46,7 @@ namespace OOPCourse.Main
         {
             var random = new Random();
             EventHandler eventHandler = null;
-            switch (random.Next(1, 5))
+            switch (2)
             {
                 case 1:
                     var assassinRepo = new AssassinsRepo(_context);
@@ -49,7 +54,7 @@ namespace OOPCourse.Main
                     break;
                 case 2:
                     var thievesRepo = new ThievesRepo(_context);
-                    eventHandler = new ThiefHandler(thievesRepo);
+                    eventHandler = new ThiefHandler(thievesRepo, _numberOfThefts--);
                     break;
                 case 3:
                     var beggarsRepo = new BeggarsRepo(_context);

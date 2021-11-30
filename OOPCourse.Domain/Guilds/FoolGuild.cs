@@ -15,10 +15,9 @@ namespace OOPCourse.Domain.Guilds
 
         public Fool GetFool()
         {
-            var temp = _fools.Fools.ToList();
             var random = new Random();
-            var id = random.Next(1, temp.Count);
-            return temp.FirstOrDefault(t =>
+            var id = random.Next(1, _fools.Fools.Count());
+            return _fools.Fools.FirstOrDefault(t =>
                 t.Id == id);
         }
     }

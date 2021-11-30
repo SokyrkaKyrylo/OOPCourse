@@ -27,7 +27,8 @@ namespace OOPCourse.Main
                 System.Console.WriteLine("During loading something went wrong, try again");
                 return;
             }
-            var adventure = new Adventure(dbContext);
+
+            var adventure = new Adventure(dbContext, 2, 100);
             adventure.Start();
         }
     }

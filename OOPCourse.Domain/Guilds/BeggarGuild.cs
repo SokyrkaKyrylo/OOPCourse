@@ -15,10 +15,9 @@ namespace OOPCourse.Domain.Guilds
 
         public Beggar GetBeggar()
         {
-            var temp = _beggars.Beggars.ToList();
             var random = new Random();
-            var id = random.Next(1, temp.Count - 1);
-            return temp
+            var id = random.Next(1, _beggars.Beggars.Count());
+            return _beggars.Beggars
                 .FirstOrDefault(b => b.Id == id);
         }
     }

@@ -65,9 +65,8 @@ namespace OOPCourse.Main
 
         public static void RefershDb(ApplicationContext context)
         {
-            var asssinsToUpdate = context.Assassins.Where(a => a.Status == false);
-            foreach (var item in asssinsToUpdate)
-                item.Status = true;
+            var asssinsToUpdate = context.Assassins.Where(a => !a.Status).ToList();
+            asssinsToUpdate.ForEach(a => a.Status = true);
             context.UpdateRange(asssinsToUpdate);
             context.SaveChanges();
         }
