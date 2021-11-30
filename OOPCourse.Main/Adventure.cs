@@ -46,14 +46,14 @@ namespace OOPCourse.Main
         {
             var random = new Random();
             EventHandler eventHandler = null;
-            switch (random.Next(1,5))
+            switch (2)
             {
                 case 1:
                     var assassinRepo = new AssassinsRepo(_context);
                     eventHandler = new AssassinHandler(assassinRepo);
                     break;
                 case 2:
-                    if (_numberOfThefts <= 0)
+                    if (_numberOfThefts-- <= 0)
                     {                        
                         Console.WriteLine("U come across a stranger who wish u a good luck");
                         return true;

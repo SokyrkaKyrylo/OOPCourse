@@ -28,7 +28,7 @@ namespace OOPCourse.Main
                 return;
             }
 
-            var adventure = new Adventure(dbContext, 100, 6);
+            var adventure = new Adventure(dbContext, 100, 1);
             adventure.Start();
         }
     }
