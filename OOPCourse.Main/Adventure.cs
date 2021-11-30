@@ -46,7 +46,7 @@ namespace OOPCourse.Main
         {
             var random = new Random();
             EventHandler eventHandler = null;
-            switch (2)
+            switch (random.Next(1,5))
             {
                 case 1:
                     var assassinRepo = new AssassinsRepo(_context);
