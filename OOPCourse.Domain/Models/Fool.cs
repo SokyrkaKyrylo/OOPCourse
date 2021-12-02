@@ -4,6 +4,6 @@
     {
         public int Id { get; set; }
         public string Type { get; set; }
-        public double Salary { get; set; }
+        public decimal Salary { get; set; }
     }
 }

@@ -18,13 +18,13 @@ namespace OOPCourse.Main.EventHandlers
 
         public override bool Communicate(Player player)
         {
-            var guild = new BeggarGuild(_beggarsRepo);
+            NpcGuild<Beggar> guild = new BeggarGuild(_beggarsRepo);
             Beggar beggar = null;
 
             try
             {
                 Console.WriteLine("Something went wrong, try to reload program");
-                beggar = guild.GetBeggar();
+                beggar = guild.GetNpc();
             }
             catch (Exception)
             {

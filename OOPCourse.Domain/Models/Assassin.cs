@@ -4,8 +4,8 @@
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public double LowRewardBound { get; set; }
-        public double HighRewardBound { get; set; }
+        public decimal LowRewardBound { get; set; }
+        public decimal HighRewardBound { get; set; }
         public bool Status { get; set; }
     }
 }

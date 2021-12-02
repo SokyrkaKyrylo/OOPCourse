@@ -5,9 +5,9 @@ using System.Linq;
 
 namespace OOPCourse.Domain.Guilds
 {
-    public class ThiefGuild
+    public class ThiefGuild : NpcGuild<Thief>
     {
-        public const double StandardFee = 10;
+        public const decimal StandardFee = 10;
         
         private readonly IThievesRepo _thieves;
 
@@ -16,7 +16,7 @@ namespace OOPCourse.Domain.Guilds
             this._thieves = thieves;
         }
 
-        public Thief GetThief()
+        public override Thief GetNpc()
         {
             var random = new Random();
             var id = random.Next(1, _thieves.Thieves.Count());

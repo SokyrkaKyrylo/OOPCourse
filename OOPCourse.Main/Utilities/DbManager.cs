@@ -37,19 +37,19 @@ namespace OOPCourse.Main
                 new Beggar { Type = "Drooler", Fee = 2},
                 new Beggar { Type = "Dribbler", Fee = 1},
                 new Beggar { Type = "Mumbler", Fee = 1},
-                new Beggar { Type = "Mutterer", Fee = 0.9},
-                new Beggar { Type = "Walking-Along-Shouters", Fee = 0.8},
-                new Beggar { Type = "Demanders of a Chip", Fee = 0.6},
-                new Beggar { Type = "People Who Call Other People Jimmy", Fee = 0.5},
-                new Beggar { Type = "People Who Need Eightpence For A Meal", Fee = 0.08},
-                new Beggar { Type = "People Who Need Tuppence For A Cup Of Tea", Fee = 0.02},
+                new Beggar { Type = "Mutterer", Fee = 0.9M},
+                new Beggar { Type = "Walking-Along-Shouters", Fee = 0.8M},
+                new Beggar { Type = "Demanders of a Chip", Fee = 0.6M},
+                new Beggar { Type = "People Who Call Other People Jimmy", Fee = 0.5M},
+                new Beggar { Type = "People Who Need Eightpence For A Meal", Fee = 0.08M},
+                new Beggar { Type = "People Who Need Tuppence For A Cup Of Tea", Fee = 0.02M},
                 new Beggar { Type = "People With Placards Saying \"Why lie? I need a beer.\"", Fee = 0},
 
             });
 
             context.Fools.AddRange(new List<Fool>
             {
-                new Fool { Type = "Muggins", Salary = 0.5},
+                new Fool { Type = "Muggins", Salary = 0.5M},
                 new Fool { Type = "Gull", Salary = 1},
                 new Fool { Type = "Dupe", Salary = 2},
                 new Fool { Type = "Butt", Salary = 3},

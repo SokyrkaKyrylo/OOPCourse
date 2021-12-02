@@ -4,23 +4,23 @@ namespace OOPCourse.Domain.Concrete
 {
     public class Player
     {
-        public Player(double purse)
+        public Player(decimal purse)
         {
             if (purse < 0)
                 throw new ArgumentException("Money can not be less than zero");
             Purse = purse;
         }
 
-        public double Purse { get; private set; }
+        public decimal Purse { get; private set; }
 
-        public void AddMoney(double sum)
+        public void AddMoney(decimal sum)
         {
             if (sum < 0)
                 throw new ArgumentException("Money can not be less than zero");
             Purse += sum;
         }
 
-        public bool GetMoney(double sum)
+        public bool GetMoney(decimal sum)
         {
             if (sum < 0)
                 throw new ArgumentException("Money can not be less than zero");

@@ -5,7 +5,7 @@ using System.Linq;
 
 namespace OOPCourse.Domain.Guilds
 {
-    public class BeggarGuild
+    public class BeggarGuild : NpcGuild<Beggar>
     {
         private readonly IBeggarsRepo _beggars;
         public BeggarGuild(IBeggarsRepo beggars)
@@ -13,7 +13,7 @@ namespace OOPCourse.Domain.Guilds
             _beggars = beggars;
         }
 
-        public Beggar GetBeggar()
+        public override Beggar GetNpc()
         {
             var random = new Random();
             var id = random.Next(1, _beggars.Beggars.Count());
