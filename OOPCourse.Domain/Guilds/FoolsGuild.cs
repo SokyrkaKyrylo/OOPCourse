@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using OOPCourse.Domain.Models;
 
 namespace OOPCourse.Domain.Guilds
 {
-    internal class FoolsGuild
+    public class FoolsGuild : NpcGuild<Fool>
     {
+        public const string GuildName =
+            "The Guild of Fools and Joculators and College of Clowns";
     }
 }

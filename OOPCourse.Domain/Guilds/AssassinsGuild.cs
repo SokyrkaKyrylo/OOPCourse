@@ -9,6 +9,9 @@ namespace OOPCourse.Domain.Guilds
     {
         private readonly IAssassinsRepo _assassinsRepo;
 
+        public const string GuildName =
+            "Ankh-Morpork Assassins' Guild";
+
         public AssassinsGuild(IAssassinsRepo assassinsRepo)
         {
             _assassinsRepo = assassinsRepo;

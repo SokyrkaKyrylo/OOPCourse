@@ -18,12 +18,12 @@ namespace OOPCourse.Main.EventHandlers
 
         public override bool Communicate(Player player)
         {            
-            NpcGuild<Thief> guild = new ThiefGuild(_thievesRepo);
+            NpcGuild<Thief> guild = new ThievesGuild();
             Thief thief = null;
 
             try
             {
-                thief = guild.GetNpc();
+                thief = guild.GetNpc(_thievesRepo.Thieves);
             }
             catch (Exception)
             {
@@ -34,8 +34,8 @@ namespace OOPCourse.Main.EventHandlers
             if (thief == null)
                 return true;
 
-            Console.WriteLine("Wandering around u came across a member of Thief Guild!\n" +
-                $"My name is {thief.Name}. U should pay a fee in size of {ThiefGuild.StandardFee} AM$");
+            Console.WriteLine($"Wandering around u came across a member of {ThievesGuild.GuldName}!\n" +
+                $"My name is {thief.Name}. U should pay a fee in size of {ThievesGuild.StandardFee} AM$");
 
             if (!UserInputGetter.GetUsersConfirm("Will u pay? "))
             {
@@ -43,7 +43,7 @@ namespace OOPCourse.Main.EventHandlers
                 return false;
             }
 
-            if (!player.GetMoney(ThiefGuild.StandardFee))
+            if (!player.GetMoney(ThievesGuild.StandardFee))
             {
                 Console.WriteLine("Heh, as I understand, U decide to treat us. It was a mistake");
                 return false;

@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using OOPCourse.Domain.Models;
 
 namespace OOPCourse.Domain.Guilds
 {
-    internal class BeggarsGuild
+    public class BeggarsGuild : NpcGuild<Beggar>
     {
+        public const string GuildName =
+            "Ankh-Morpork Beggars' Guild";
     }
 }

@@ -1,7 +1,16 @@
-﻿namespace OOPCourse.Domain.Guilds
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+
+namespace OOPCourse.Domain.Guilds
 {
-    public abstract class NpcGuild<T> where T : class
+    public class NpcGuild<T> where T : class
     {
-        public abstract T GetNpc();
+        public T GetNpc(IEnumerable<T> npcList)
+        {
+            var random = new Random();
+            var id = random.Next(1, npcList.Count());
+            return npcList.ElementAt(id);
+        }
     }
 }

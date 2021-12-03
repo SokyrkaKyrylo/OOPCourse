@@ -1,12 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using OOPCourse.Domain.Models;
 
 namespace OOPCourse.Domain.Guilds
 {
-    internal class ThievesGuild
+    public class ThievesGuild : NpcGuild<Thief>
     {
+        public const decimal StandardFee = 10;
+
+        public const string GuldName =
+            "Guild of Thieves, Cutpurses and Allied Trades";
     }
 }

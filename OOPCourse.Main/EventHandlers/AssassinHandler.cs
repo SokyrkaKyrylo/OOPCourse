@@ -19,7 +19,7 @@ namespace OOPCourse.Main.EventHandlers
         public override bool Communicate(Player player)
         {
             var guild = new AssassinsGuild(_assassinsRepo);
-            Console.WriteLine("Wandering around u came across a member of Assassins Guild!!\n" +
+            Console.WriteLine($"Wandering around u came across a member of {AssassinsGuild.GuildName}!!\n" +
                 "He said that smb want's to kill and offer a help, u only should pay");
 
             if (!UserInputGetter.GetUsersConfirm("Do u accept Assassins guild's offer? "))

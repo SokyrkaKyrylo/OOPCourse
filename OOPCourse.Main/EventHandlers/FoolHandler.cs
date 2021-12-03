@@ -18,12 +18,12 @@ namespace OOPCourse.Main.EventHandlers
 
         public override bool Communicate(Player player)
         {
-            NpcGuild <Fool> guild = new FoolGuild(_foolsRepo);
+            NpcGuild<Fool> guild = new NpcGuild<Fool>();
             Fool fool = null;
 
             try
             {
-                fool = guild.GetNpc();
+                fool = guild.GetNpc(_foolsRepo.Fools);
             }
             catch (Exception)
             {
@@ -34,8 +34,8 @@ namespace OOPCourse.Main.EventHandlers
             if (fool == null)
                 return true;
 
-            Console.WriteLine("Wandering around u came across your friend. Also he is a member of Fools guild!!\n" +
-                $"His is {fool.Type}. And he offer u to work and get salary in size of {MoneyConverter.Convert(fool.Salary)}");
+            Console.WriteLine($"Wandering around u came across your friend. Also he is a member of {FoolsGuild.GuildName}!!" +
+                $"\nHis is {fool.Type}. And he offer u to work and get salary in size of {MoneyConverter.Convert(fool.Salary)}");
 
             if (!UserInputGetter.GetUsersConfirm("Will u work? "))
             {
