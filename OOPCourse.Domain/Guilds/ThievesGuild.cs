@@ -6,7 +6,7 @@ namespace OOPCourse.Domain.Guilds
     {
         public const decimal StandardFee = 10;
 
-        public const string GuldName =
+        public const string GuildName =
             "Guild of Thieves, Cutpurses and Allied Trades";
     }
 }

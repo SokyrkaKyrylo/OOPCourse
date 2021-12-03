@@ -34,7 +34,7 @@ namespace OOPCourse.Main.EventHandlers
             if (thief == null)
                 return true;
 
-            Console.WriteLine($"Wandering around u came across a member of {ThievesGuild.GuldName}!\n" +
+            Console.WriteLine($"Wandering around u came across a member of {ThievesGuild.GuildName}!\n" +
                 $"My name is {thief.Name}. U should pay a fee in size of {ThievesGuild.StandardFee} AM$");
 
             if (!UserInputGetter.GetUsersConfirm("Will u pay? "))
