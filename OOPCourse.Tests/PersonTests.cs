@@ -13,12 +13,15 @@ namespace OOPCourse.Tests
             Assert.Throws<ArgumentException>(() => p.AddMoney(-5));
         }
 
-        [Fact]
-        public void AddMoney_WhenSumIsCorrect_AddSumToPurse()
+        [Theory]
+        [InlineData(0, 10, 10)]
+        [InlineData(10, 10, 20)]
+
+        public void AddMoney_WhenSumIsCorrect_AddSumToPurse(decimal initial, decimal salary, decimal result)
         {
-            var p = new Player(50);
-            p.AddMoney(10);
-            Assert.Equal(60, p.Purse);
+            var p = new Player(initial);
+            p.AddMoney(salary);
+            Assert.Equal(result, p.Purse);
         }
 
         [Fact]
@@ -28,19 +31,24 @@ namespace OOPCourse.Tests
             Assert.Throws<ArgumentException>(() => p.GetMoney(-5));
         }
 
-        [Fact]
-        public void GetMoney_WhenSumIsMoreThanPurse_ReturnsFalse()
+        [Theory]
+        [InlineData(0, 10)]
+        [InlineData(10, 50)]
+        public void GetMoney_WhenSumIsMoreThanPurse_ReturnsFalse(decimal purse, decimal fee)
         {
-            var p = new Player(50);
-            var result = p.GetMoney(60);
+            var p = new Player(purse);
+            var result = p.GetMoney(fee);
             Assert.False(result);
         }
 
-        [Fact]
-        public void GetMoney_WhenSumIsLessThanPurse_ReturnsTrue()
+        [Theory]
+        [InlineData(0, 0)]
+        [InlineData(10, 5)]
+        [InlineData(10, 10)]
+        public void GetMoney_WhenSumIsCorrect_ReturnsTrue(decimal purse, decimal fee)
         {
-            var p = new Player(50);
-            var result = p.GetMoney(10);
+            var p = new Player(purse);
+            var result = p.GetMoney(fee);
             Assert.True(result);
         }
     }
