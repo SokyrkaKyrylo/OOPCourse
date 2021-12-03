@@ -5,11 +5,14 @@ using System.Linq;
 
 namespace OOPCourse.Domain.Guilds
 {
-    public class AssassinGuild
+    public class AssassinsGuild
     {
         private readonly IAssassinsRepo _assassinsRepo;
 
-        public AssassinGuild(IAssassinsRepo assassinsRepo)
+        public const string GuildName =
+            "Ankh-Morpork Assassins' Guild";
+
+        public AssassinsGuild(IAssassinsRepo assassinsRepo)
         {
             _assassinsRepo = assassinsRepo;
         }

@@ -18,16 +18,16 @@ namespace OOPCourse.Main.EventHandlers
 
         public override bool Communicate(Player player)
         {
-            NpcGuild<Beggar> guild = new BeggarGuild(_beggarsRepo);
+            NpcGuild<Beggar> guild = new BeggarsGuild();
             Beggar beggar = null;
 
             try
             {
-                Console.WriteLine("Something went wrong, try to reload program");
-                beggar = guild.GetNpc();
+                beggar = guild.GetNpc(_beggarsRepo.Beggars);
             }
             catch (Exception)
             {
+                Console.WriteLine("Something went wrong, try to reload program");
                 return true;
             }
 
@@ -36,8 +36,8 @@ namespace OOPCourse.Main.EventHandlers
                 return true;
             }
 
-            Console.WriteLine("Wandering around u came across a member of Beggar Guild!!\n" +
-                $"He is a {beggar.Type}. and he ask for some help is size of {MoneyConverter.Convert(beggar.Fee)}");
+            Console.WriteLine($"Wandering around u came across a member of {BeggarsGuild.GuildName}" +
+                $"!!\nHe is a {beggar.Type}. and he ask for some help is size of {MoneyConverter.Convert(beggar.Fee)}");
 
             if (!UserInputGetter.GetUsersConfirm("Will u help him? "))
             {

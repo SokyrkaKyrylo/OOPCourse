@@ -9,7 +9,7 @@ namespace OOPCourse.Tests
 {
     public class AssassinsGuildTests
     {
-        private AssassinGuild _guild;
+        private AssassinsGuild _guild;
 
         public AssassinsGuildTests()
         {
@@ -23,7 +23,7 @@ namespace OOPCourse.Tests
                     new Assassin {Name = "test3", LowRewardBound = 1, HighRewardBound = 2, Status = true}
                 });
 
-            _guild = new AssassinGuild(mock.Object);
+            _guild = new AssassinsGuild(mock.Object);
         }
 
         [Theory]
