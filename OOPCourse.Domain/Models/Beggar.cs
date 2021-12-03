@@ -4,6 +4,6 @@
     {
         public int Id { get; set; }
         public string Type { get; set; }
-        public double Fee { get; set; }
+        public decimal Fee { get; set; }
     }
 }

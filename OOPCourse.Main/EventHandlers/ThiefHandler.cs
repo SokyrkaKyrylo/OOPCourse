@@ -18,12 +18,12 @@ namespace OOPCourse.Main.EventHandlers
 
         public override bool Communicate(Player player)
         {            
-            var guild = new ThiefGuild(_thievesRepo);
+            NpcGuild<Thief> guild = new ThiefGuild(_thievesRepo);
             Thief thief = null;
 
             try
             {
-                thief = guild.GetThief();
+                thief = guild.GetNpc();
             }
             catch (Exception)
             {

@@ -11,9 +11,9 @@ namespace OOPCourse.Main
         private ApplicationContext _context;
 
         private int _numberOfThefts;
-        private int _playerPurse;
+        private decimal _playerPurse;
 
-        public Adventure(ApplicationContext context, int playerPurse, int numberOfThefts)
+        public Adventure(ApplicationContext context, decimal playerPurse, int numberOfThefts)
         {
             _context = context;
             _numberOfThefts = numberOfThefts;

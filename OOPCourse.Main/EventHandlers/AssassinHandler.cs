@@ -29,16 +29,16 @@ namespace OOPCourse.Main.EventHandlers
             }
 
             string input = default;
-            double reward = default;
+            decimal reward = default;
             do
             {
                 Console.Write("Enter reward: ");
                 input = Console.ReadLine();
-                if (!double.TryParse(input, out reward))
+                if (!decimal.TryParse(input, out reward))
                 {
                     Console.WriteLine("Try again please");
                 }
-            } while (!double.TryParse(input, out reward));
+            } while (!decimal.TryParse(input, out reward));
 
             Assassin assassin = null;
             try

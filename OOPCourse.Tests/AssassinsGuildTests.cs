@@ -26,17 +26,13 @@ namespace OOPCourse.Tests
             _guild = new AssassinGuild(mock.Object);
         }
 
-        [Fact]
-        public void GetAssassin_WhenRewardLessThanZero_ReturnNull()
+        [Theory]
+        [InlineData(-5)]
+        [InlineData(5)]
+        [InlineData(3)]
+        public void GetAssassin_WhenRewardIsIncorect_ReturnNull(int input)
         {
-            var guild = new AssassinGuild(null);
-            Assert.Null(guild.GetAssassin(-5));
-        }
-
-        [Fact]
-        public void GetAssassin_WhenRewardDoesntMatch_ReturnNull()
-        {
-            Assert.Null(_guild.GetAssassin(5));
+            Assert.Null(_guild.GetAssassin(input));
         }
 
         [Fact]
@@ -46,12 +42,6 @@ namespace OOPCourse.Tests
 
             Assert.Equal("test1", res.Name);
             Assert.False(res.Status);
-        }
-
-        [Fact]
-        public void GetAssassin_WhenAssassinWithSuitableRewardIsBusy_ReturnNull()
-        {
-            Assert.Null(_guild.GetAssassin(3));
-        }
+        }       
     }
 }

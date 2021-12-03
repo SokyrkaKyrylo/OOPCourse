@@ -5,15 +5,15 @@ using System.Linq;
 
 namespace OOPCourse.Domain.Guilds
 {
-    public class FoolGuild
+    public class FoolGuild : NpcGuild<Fool>
     {
         private readonly IFoolsRepo _fools;
         public FoolGuild(IFoolsRepo fools)
         {
             _fools = fools;
         }
-
-        public Fool GetFool()
+       
+        public override Fool GetNpc()
         {
             var random = new Random();
             var id = random.Next(1, _fools.Fools.Count());

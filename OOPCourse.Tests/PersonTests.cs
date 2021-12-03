@@ -37,7 +37,7 @@ namespace OOPCourse.Tests
         }
 
         [Fact]
-        public void GetMoney_WhenSumIsMoreThanPurse_ReturnsTrue()
+        public void GetMoney_WhenSumIsLessThanPurse_ReturnsTrue()
         {
             var p = new Player(50);
             var result = p.GetMoney(10);

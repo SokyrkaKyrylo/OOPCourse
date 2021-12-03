@@ -20,7 +20,7 @@ namespace OOPCourse.Domain.Guilds
                 .Where(a => a.Status).Take(4).ToList();
         }
 
-        public Assassin GetAssassin(double reward)
+        public Assassin GetAssassin(decimal reward)
         {
             if (reward <= 0)
                 return null;
